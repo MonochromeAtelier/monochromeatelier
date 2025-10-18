@@ -48,6 +48,8 @@
       overflow: hidden;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px 12px 0 0;
+      height: auto;
+      min-height: 200px;
     }
     .slideshow img {
       width: 100%;
@@ -102,10 +104,9 @@
   <section id="games">
     <h2>Our Games</h2>
     <div class="cards">
-
       <div class="card">
         <div class="slideshow">
-          <img src="shepperd-1.png" class="active" alt="Visual Novel-like Prsion Cell Scene">
+          <img src="shepperd-1.png" class="active" alt="Visual Novel-like Prison Cell Scene">
           <img src="shepperd-2.png" alt="Prison Pre-lobby with Dialogue Box">
           <img src="shepperd-3.png" alt="Prison Administration">
           <img src="shepperd-4.png" alt="Prison Pre-lobby Interaction Key">
@@ -115,7 +116,6 @@
           <p>You were framed for murder, falsely. An acquaintance took you out of your abyss. Even so, you feel that it wasn't his act so fervour for nothing...</p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -135,16 +135,18 @@
 
   <!-- Slideshow Script -->
   <script>
-    const slideshows = document.querySelectorAll('.slideshow');
-    slideshows.forEach(show => {
-      const imgs = show.querySelectorAll('img');
-      let index = 0;
-      setInterval(() => {
-        imgs[index].classList.remove('active');
-        index = (index + 1) % imgs.length;
-        imgs[index].classList.add('active');
-      }, 4000); // change image every 4 seconds
-    });
+    window.onload = function() {
+      const slideshows = document.querySelectorAll('.slideshow');
+      slideshows.forEach(show => {
+        const imgs = show.querySelectorAll('img');
+        let index = 0;
+        setInterval(() => {
+          imgs[index].classList.remove('active');
+          index = (index + 1) % imgs.length;
+          imgs[index].classList.add('active');
+        }, 4000); // change image every 4 seconds
+      });
+    };
   </script>
 
 </body>
