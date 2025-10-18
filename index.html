@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monochrome Atelier | Game Studio</title>
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="favicon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     :root {
       --bg: #0a0a0a;
@@ -40,6 +40,29 @@
     .card-content {padding:1rem 1.2rem 1.5rem;}
     .card-content h3 {color: var(--accent); margin-bottom:0.5rem;}
     .card-content p {color:#d0d4de; font-size:0.95rem; line-height:1.5;}
+
+    /* Slideshow Styles */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px 12px 0 0;
+    }
+    .slideshow img {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      filter: grayscale(70%);
+    }
+    .slideshow img.active {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
 
     /* Contact Section */
     .contact-links {display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; margin-top:1rem;}
@@ -79,12 +102,20 @@
   <section id="games">
     <h2>Our Games</h2>
     <div class="cards">
+
       <div class="card">
+        <div class="slideshow">
+          <img src="shepperd-1.png" class="active" alt="Visual Novel-like Prsion Cell Scene">
+          <img src="shepperd-2.png" alt="Prison Pre-lobby with Dialogue Box">
+          <img src="shepperd-3.png" alt="Prison Administration">
+          <img src="shepperd-4.png" alt="Prison Pre-lobby Interaction Key">
+        </div>
         <div class="card-content">
           <h3>The Unregistered Shepperd</h3>
           <p>You were framed for murder, falsely. An acquaintance took you out of your abyss. Even so, you feel that it wasn't his act so fervour for nothing...</p>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -102,7 +133,19 @@
     <p>© 2025 Monochrome Atelier</p>
   </footer>
 
+  <!-- Slideshow Script -->
+  <script>
+    const slideshows = document.querySelectorAll('.slideshow');
+    slideshows.forEach(show => {
+      const imgs = show.querySelectorAll('img');
+      let index = 0;
+      setInterval(() => {
+        imgs[index].classList.remove('active');
+        index = (index + 1) % imgs.length;
+        imgs[index].classList.add('active');
+      }, 4000); // change image every 4 seconds
+    });
+  </script>
+
 </body>
 </html>
-
-
