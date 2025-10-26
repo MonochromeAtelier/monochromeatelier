@@ -54,6 +54,7 @@
     display: flex;
     gap: 0.5rem;
     justify-content: center;
+    margin-top: 40px; /* pushed down */
     margin-bottom: 1rem;
   }
   .thumbnail-slideshow img {
@@ -112,15 +113,15 @@
   <div class="cards">
     <div class="card">
       <!-- Main Cover Image -->
-      <img src="tus-thumbnail.jpg" alt="The Unregistered Shepperd Cover" class="main-image" onclick="openModal(0)">
+      <img src="tus-thumbnail.jpg" alt="The Unregistered Shepperd Cover" class="main-image" id="mainCover">
 
       <!-- Thumbnail Slideshow Below -->
       <div class="thumbnail-slideshow">
-        <img src="tus-thumbnail.jpg" alt="The Thumbnail" onclick="openModal(0)">
-        <img src="shepperd-1.png" alt="Scene 1" onclick="openModal(1)">
-        <img src="shepperd-2.png" alt="Scene 2" onclick="openModal(2)">
-        <img src="shepperd-3.png" alt="Scene 3" onclick="openModal(3)">
-        <img src="shepperd-4.png" alt="Scene 4" onclick="openModal(4)">
+        <img src="tus-thumbnail.jpg" alt="Thumbnail 1" onclick="openModal(0)">
+        <img src="shepperd-1.png" alt="Thumbnail 2" onclick="openModal(1)">
+        <img src="shepperd-2.png" alt="Thumbnail 3" onclick="openModal(2)">
+        <img src="shepperd-3.png" alt="Thumbnail 4" onclick="openModal(3)">
+        <img src="shepperd-4.png" alt="Thumbnail 5" onclick="openModal(4)">
       </div>
 
       <!-- Card Content -->
@@ -156,8 +157,10 @@
 <script>
 let modal = document.getElementById('modal');
 let modalImg = document.getElementById('modalImg');
+let mainCover = document.getElementById('mainCover');
 let currentIndex = 0;
 const images = [
+  'tus-thumbnail.jpg', // main cover included
   'shepperd-1.png',
   'shepperd-2.png',
   'shepperd-3.png',
@@ -168,6 +171,7 @@ function openModal(index) {
   currentIndex = index;
   modal.style.display = 'flex';
   modalImg.src = images[currentIndex];
+  mainCover.src = images[currentIndex]; // update main cover
 }
 
 function closeModal() {
@@ -177,11 +181,13 @@ function closeModal() {
 function nextSlide() {
   currentIndex = (currentIndex + 1) % images.length;
   modalImg.src = images[currentIndex];
+  mainCover.src = images[currentIndex];
 }
 
 function prevSlide() {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   modalImg.src = images[currentIndex];
+  mainCover.src = images[currentIndex];
 }
 
 // Close modal by clicking outside image
