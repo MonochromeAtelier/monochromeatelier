@@ -130,6 +130,24 @@
         <h3>The Unregistered Shepperd</h3>
         <p>You were framed for murder, falsely. An acquaintance took you out of your abyss. Even so, you feel that it wasn't his act so fervour for nothing...</p>
       </div>
+           
+      <!-- Main Cover Image -->
+      <img src="game2-thumbnail.jpg" alt="Game 2 Cover" class="main-image" id="mainCover2">
+
+      <!-- Thumbnail Slideshow Below -->
+      <div class="thumbnail-slideshow">
+        <img src="compunction-thumbnail.png" alt="Thumbnail 1" onclick="openModal2(0)">
+        <img src="compunction-1.png" alt="Thumbnail 2" onclick="openModal2(1)">
+        <img src="compunction-2.png" alt="Thumbnail 3" onclick="openModal2(2)">
+        <img src="compunction-3.png" alt="Thumbnail 4" onclick="openModal2(3)">
+        <img src="compunction-4.png" alt="Thumbnail 5" onclick="openModal2(4)">
+      </div>
+
+      <!-- Card Content -->
+      <div class="card-content">
+        <h3>Compunction</h3>
+        <p>Will you be able, to stop yourself... Or will you even try to...? Your psychology is fragile like a cup of red wine, but you treasure it like nothing, at the same time triggering yourself to spil it out. It's your life you're playing with here.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -140,6 +158,13 @@
   <span class="prev" onclick="prevSlide()">&#10094;</span>
   <img id="modalImg" src="" alt="">
   <span class="next" onclick="nextSlide()">&#10095;</span>
+</div>
+
+<div id="modal2" class="modal">
+  <span class="close" onclick="closeModal2()">&times;</span>
+  <span class="prev" onclick="prevSlide2()">&#10094;</span>
+  <img id="modalImg2" src="" alt="">
+  <span class="next" onclick="nextSlide2()">&#10095;</span>
 </div>
 
 <section id="contact">
@@ -195,7 +220,48 @@ function prevSlide() {
 modal.addEventListener('click', function(e){
   if(e.target === modal) closeModal();
 });
+let modal2 = document.getElementById('modal2');
+let modalImg2 = document.getElementById('modalImg2');
+let mainCover2 = document.getElementById('mainCover2');
+let currentIndex2 = 0;
+
+const images2 = [
+  'game2-thumbnail.jpg',
+  'game2-1.jpg',
+  'game2-2.jpg',
+  'game2-3.jpg',
+  'game2-4.jpg'
+];
+
+function openModal2(index) {
+  currentIndex2 = index;
+  modal2.style.display = 'flex';
+  modalImg2.src = images2[currentIndex2];
+  mainCover2.src = images2[currentIndex2];
+}
+
+function closeModal2() {
+  modal2.style.display = 'none';
+}
+
+function nextSlide2() {
+  currentIndex2 = (currentIndex2 + 1) % images2.length;
+  modalImg2.src = images2[currentIndex2];
+  mainCover2.src = images2[currentIndex2];
+}
+
+function prevSlide2() {
+  currentIndex2 = (currentIndex2 - 1 + images2.length) % images2.length;
+  modalImg2.src = images2[currentIndex2];
+  mainCover2.src = images2[currentIndex2];
+}
+
+modal2.addEventListener('click', function(e){
+  if(e.target === modal2) closeModal2();
+});
+
 </script>
 
 </body>
 </html>
+
